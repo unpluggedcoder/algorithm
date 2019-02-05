@@ -1,4 +1,6 @@
 #include <stdlib.h>
+#include <iostream>
+using namespace std;
 
 struct ListNode {
     int val;
@@ -47,3 +49,25 @@ class Solution {
         return head;
     }
 };
+int main(int argc, char const* argv[]) {
+    ListNode a1 = ListNode(1);
+    ListNode a2 = ListNode(3);
+    a1.next = &a2;
+    ListNode a3 = ListNode(4);
+    a2.next = &a3;
+
+    ListNode b1 = ListNode(9);
+    ListNode b2 = ListNode(3);
+    b1.next = &b2;
+    ListNode b3 = ListNode(6);
+    b2.next = &b3;
+    ListNode* res = Solution().addTwoNumbers(&a1, &b1);
+    ListNode* tmp;
+    while (res) {
+        cout << res->val;
+        tmp = res;
+        res = res->next;
+        free(tmp);
+    }
+    return 0;
+}
